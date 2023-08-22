@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const uploadCsvSchema = z.custom<FileList>().superRefine((files, ctx) => {
+export const uploadCsvSchema = z.custom<FileList>().superRefine((files, ctx) => {
     if (files.length === 0) {
         ctx.addIssue({
             code: z.ZodIssueCode.custom,
@@ -31,3 +31,9 @@ const uploadCsvSchema = z.custom<FileList>().superRefine((files, ctx) => {
 
     return true
 });
+
+export const loginUserSchema = z.object({
+    email: z.string().email("Please enter a valid email address"),
+    password: z.string().min(1, "Please enter a password")
+});
+export type LoginUserSchema = typeof loginUserSchema;

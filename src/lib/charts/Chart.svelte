@@ -2,7 +2,7 @@
 	import { scaleLinear } from 'd3';
     // import * as d3 from 'd3';
 
-	import XAxis from '$lib/XAxis.svelte';
+	import XAxis from '$lib/charts/XAxis.svelte';
 	import YAxis from '$lib/YAxis.svelte';
 	import Datapoint from '$lib/Datapoint.svelte';
     import Line from '$lib/Dline.svelte';
