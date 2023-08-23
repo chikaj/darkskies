@@ -5,8 +5,8 @@
     export let data: PageData;
 </script>
 
-<div class="flex h-full">
-	<div class="m-auto">
+<div class="flex flex-col h-full">
+	<div class="flex m-auto h-1/4 w-1/4">
 		<FileDropzone name="files" />
 	</div>
 </div>

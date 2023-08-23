@@ -31,6 +31,27 @@ export const uploadCsvSchema = z.custom<FileList>().superRefine((files, ctx) => 
 
     return true
 });
+export type UploadCsvSchema = typeof uploadCsvSchema;
+
+export const registerUserSchema = z
+    .object({
+        full_name: z
+            .string()
+            .max(140, "Name must be 140 characters or less")
+            .nullish(),
+        email: z
+            .string()
+            .email("Invalid email address"),
+        password: z
+            .string()
+            .min(6, "Password must be at least 6 characters")
+            .max(64, "Password must be 64 characters or less"),
+        passwordConfirm: z
+            .string()
+            .min(6, "Password must be at least 6 characters")
+            .max(64, "Password must be 64 characters or less"),
+});
+export type RegisterUserSchema = typeof registerUserSchema;
 
 export const loginUserSchema = z.object({
     email: z.string().email("Please enter a valid email address"),

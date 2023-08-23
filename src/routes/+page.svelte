@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade, draw, fly } from 'svelte/transition';
+	import type { PageData } from './$types';
 
 	let visible = false;
 
@@ -8,18 +9,21 @@
 		visible = true;
 	});
 
-	// export let data;
-	// $: session = data.session;
+	export let data: PageData;
+	$: ({ supabase } = data);
+
+	let email: string;
+	let password: string;
 </script>
 
 <main class="flex flex-col h-full p-10">
-	<div class="m-auto flex flex-col">
+	<div class="m-auto flex flex-col w-full xl:w-1/2">
 		{#if visible}
 			<h3 in:fly={{ y: -200, duration: 500 }} class="m-auto text-4xl text-primary-700 pb-10">
 				Visualize the Texas
 			</h3>
 
-			<svg version="1.1" width="1178.9819" height="431.55988">
+			<svg version="1.1" viewBox="0, 0, 1178.9819, 431.55988">
 				<defs id="defs21847">
 					<radialGradient
 						inkscape:collect="always"
@@ -97,13 +101,4 @@
 			</svg>
 		{/if}
 	</div>
-	<!-- <div class="m-auto flex p-10 justify-center">
-		{#if session}
-			<a href="/upload" class="btn bg-primary-600 w-36">Upload</a>
-		{:else}
-			<a href="/login" class="btn bg-primary-600 w-36">Login</a>
-		{/if}
-		<a href="/map" class="btn bg-secondary-600 w-36 ml-4">Map</a>
-		<a href="/chart" class="btn bg-tertiary-600 w-36 ml-4">Chart</a>
-	</div> -->
 </main>
