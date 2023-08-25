@@ -32,11 +32,12 @@ export const actions: Actions = {
         data: {
           full_name: form.data.full_name ?? "",
         },
+        emailRedirectTo: `${event.url.origin}/auth/callback`,
       },
     });
 
     if (authError) {
-      return setError(form, null, "An error occurred while registering.");
+      return setError(form, "An error occurred while registering.");
     }
 
     return {

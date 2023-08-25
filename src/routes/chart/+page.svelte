@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
     import type { PageData } from './$types';
     
     export let data: PageData;
@@ -34,4 +34,4 @@
 		width: 100%;
 		height: 100%;
 	}
-</style>
+</style> -->
