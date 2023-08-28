@@ -4,7 +4,9 @@
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import type { LayoutData } from './$types';
-	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
+	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
+	import ChevronIcon from '$lib/components/icons/ChevronIcon.svelte';
+	import Dropdownmenu from '$lib/components/Dropdownmenu.svelte';
 
 	const navigation = [
 		{ label: 'Map', href: '/map' },
@@ -42,8 +44,13 @@
 			{/each}
 
 			<svelte:fragment slot="trail">
+				<LightSwitch />
 				{#if session}
-					<a href="/upload" class="btn bg-primary-600 w-36">Upload</a>
+					<!-- <button class="btn bg-primary-600">
+						<span>{session.user.email}</span>
+						<ChevronIcon />
+					</button>  -->
+					<Dropdownmenu nameId={session.user.email} />
 				{:else}
 					<a href="/register" class="btn bg-primary-600 w-36">Register</a>
 					<a href="/login" class="btn bg-primary-600 w-36">Login</a>
