@@ -35,3 +35,5 @@
 		height: 100%;
 	}
 </style> -->
+
+<h1 class="text-6xl">Charts will go here</h1>

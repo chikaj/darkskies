@@ -1,8 +1,6 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import { FileDropzone } from '@skeletonlabs/skeleton';
-    
-    export let data: PageData;
 </script>
 
 <div class="flex flex-col h-full">

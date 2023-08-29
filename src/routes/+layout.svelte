@@ -5,12 +5,21 @@
 	import { onMount } from 'svelte';
 	import type { LayoutData } from './$types';
 	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
-	import ChevronIcon from '$lib/components/icons/ChevronIcon.svelte';
+	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+	import { storePopup } from '@skeletonlabs/skeleton';
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+
 	import Dropdownmenu from '$lib/components/Dropdownmenu.svelte';
 
 	const navigation = [
-		{ label: 'Map', href: '/map' },
-		{ label: 'Chart', href: '/chart' }
+		{ label: 'Sites', href: '/sites' },
+		{ label: 'Charts', href: '/charts' }
+	];
+
+	export let menuItems = [
+		{ label: 'Account', href: '/account' },
+		{ label: 'Create New Location', href: '/newlocation' },
+		{ label: 'Upload', href: '/upload' }
 	];
 
 	export let data: LayoutData;
@@ -46,11 +55,7 @@
 			<svelte:fragment slot="trail">
 				<LightSwitch />
 				{#if session}
-					<!-- <button class="btn bg-primary-600">
-						<span>{session.user.email}</span>
-						<ChevronIcon />
-					</button>  -->
-					<Dropdownmenu nameId={session.user.email} />
+					<Dropdownmenu nameId={session.user.email} menuItems={menuItems} />
 				{:else}
 					<a href="/register" class="btn bg-primary-600 w-36">Register</a>
 					<a href="/login" class="btn bg-primary-600 w-36">Login</a>
